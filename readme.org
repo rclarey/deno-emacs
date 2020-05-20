@@ -1,29 +1,39 @@
-#+TITLE: readme
+#+TITLE: deno-emacs
 
-* deno-emacs
 A collection of utilities to allow for development with [[https://deno.land][deno]] in emacs!
 
 This repository contains the following utilities:
 - [[deno-fmt.el]]
-- [[denoconfig]]
+- [[denoconfig.ts]]
 
-** deno-fmt.el
+* deno-fmt.el
 ~deno-fmt~ is function that formats the current buffer on save with [[https://deno.land/manual/tools/formatter][deno fmt]].
 The package also exports a minor mode that applies ~(deno-fmt)~ on save.
 
-*** Installation
-**** General
-[[https://melpa.org/#/getting-started][Configure emacs to use melpa]], then add ~(require 'deno-fmt)~ to your emacs
-config.
+** Installation
+*** General
+[[https://melpa.org/#/getting-started][Configure emacs to use melpa]], then require ~deno-fmt~ in your emacs config:
+#+BEGIN_SRC elisp
+(require 'deno-fmt)
+#+END_SRC
 
-**** Doom Emacs
-Add ~(package! deno-fmt)~ to ~.doom.d/packages.el~
+*** Doom Emacs
+Add ~deno-fmt~ to your ~.doom.d/packages.el~:
+#+BEGIN_SRC elisp
+(package! deno-fmt)
+#+END_SRC
 
-**** spacemacs
-Add ~deno-fmt~ to ~dotspacemacs-additional-packages~ in ~dotspacemacs/layers~ in
-your ~.spacemacs~ file
+*** spacemacs
+Add ~deno-fmt~ to ~dotspacemacs-additional-packages~ in your ~.spacemacs~ file:
+#+BEGIN_SRC elisp
+(defun dotspacemacs/layers ()
+  (setq-default
+   ;; ...
+   dotspacemacs-additional-packages '(deno-fmt)))
 
-*** Configuration
+#+END_SRC
+
+** Configuration
 To enable the minor mode, add a hook to your TypeScript/JavaScript mode of
 choice.
 #+BEGIN_SRC elisp
@@ -32,20 +42,27 @@ choice.
 ...
 #+END_SRC
 
-** denoconfig
+* denoconfig
 ~denoconfig~ is a small cli tool to generate a ~tsconfig.json~ to allow emacs
 (or other editors) to understand deno.
 
-*** Installation
-Run ~deno install --unstable --allow-read=<PROJECTS_ROOT> --allow-write=<PROJECTS_ROOT> https://deno.land/x/denoconfig@0.1.0/denoconfig.ts~,
+** Installation
+Install with ~deno install~:
+#+BEGIN_SRC fish
+deno install \
+    --unstable \
+    --allow-read=<PROJECTS_ROOT> \
+    --allow-write=<PROJECTS_ROOT> \
+    https://deno.land/x/denoconfig@0.1.0/denoconfig.ts
+#+END_SRC
 where ~<PROJECTS_ROOT>~ is the directory where you keep your projects (for
-example ~\~/repos~).
+example =~/repos=).
 
 Alternatively you can install ~denoconfig~ without any permissions,
 but it will prompt you for read/write permissions to the ~tsconfig.json~ in the
 directory where you run it.
 
-*** Use
+** Use
 Run ~denoconfig~ in the root directory of your project.
 
 ~denoconfig --help~ will display available options.
