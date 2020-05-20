@@ -1,29 +1,28 @@
-#+TITLE: readme
+#+TITLE: deno-emacs
 
-* deno-emacs
 A collection of utilities to allow for development with [[https://deno.land][deno]] in emacs!
 
 This repository contains the following utilities:
 - [[deno-fmt.el]]
-- [[denoconfig]]
+- [[denoconfig.ts]]
 
-** deno-fmt.el
+* deno-fmt.el
 ~deno-fmt~ is function that formats the current buffer on save with [[https://deno.land/manual/tools/formatter][deno fmt]].
 The package also exports a minor mode that applies ~(deno-fmt)~ on save.
 
-*** Installation
-**** General
+** Installation
+*** General
 [[https://melpa.org/#/getting-started][Configure emacs to use melpa]], then add ~(require 'deno-fmt)~ to your emacs
 config.
 
-**** Doom Emacs
+*** Doom Emacs
 Add ~(package! deno-fmt)~ to ~.doom.d/packages.el~
 
-**** spacemacs
+*** spacemacs
 Add ~deno-fmt~ to ~dotspacemacs-additional-packages~ in ~dotspacemacs/layers~ in
 your ~.spacemacs~ file
 
-*** Configuration
+** Configuration
 To enable the minor mode, add a hook to your TypeScript/JavaScript mode of
 choice.
 #+BEGIN_SRC elisp
@@ -32,11 +31,11 @@ choice.
 ...
 #+END_SRC
 
-** denoconfig
+* denoconfig
 ~denoconfig~ is a small cli tool to generate a ~tsconfig.json~ to allow emacs
 (or other editors) to understand deno.
 
-*** Installation
+** Installation
 Run ~deno install --unstable --allow-read=<PROJECTS_ROOT> --allow-write=<PROJECTS_ROOT> https://deno.land/x/denoconfig@0.1.0/denoconfig.ts~,
 where ~<PROJECTS_ROOT>~ is the directory where you keep your projects (for
 example ~\~/repos~).
@@ -45,7 +44,7 @@ Alternatively you can install ~denoconfig~ without any permissions,
 but it will prompt you for read/write permissions to the ~tsconfig.json~ in the
 directory where you run it.
 
-*** Use
+** Use
 Run ~denoconfig~ in the root directory of your project.
 
 ~denoconfig --help~ will display available options.
