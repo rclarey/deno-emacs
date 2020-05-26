@@ -94,6 +94,7 @@ deepAssign(config, {
     resolveJsonModule: true,
     strict: true,
     removeComments: true,
+    target: "esnext",
     plugins: [pluginConfig],
   },
 });
