@@ -4,7 +4,7 @@ import { parse } from "https://deno.land/std@0.51.0/flags/mod.ts";
 import { exists } from "https://deno.land/std@0.51.0/fs/exists.ts";
 import { deepAssign } from "https://deno.land/std@0.51.0/_util/deep_assign.ts";
 
-const VERSION = "0.1.0";
+const VERSION = "0.1.1";
 const USAGE = "USAGE:\n\tdenoconfig [OPTIONS]";
 
 function print(lines: string[]): void {

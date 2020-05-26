@@ -53,7 +53,7 @@ deno install \
     --unstable \
     --allow-read=<PROJECTS_ROOT> \
     --allow-write=<PROJECTS_ROOT> \
-    https://raw.githubusercontent.com/rclarey/deno-emacs/master/denoconfig.ts
+    https://deno.land/x/denoconfig@0.1.1/denoconfig.ts
 #+END_SRC
 where ~<PROJECTS_ROOT>~ is the directory where you keep your projects (for
 example =~/repos=).

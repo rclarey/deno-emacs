@@ -9,6 +9,7 @@
     "resolveJsonModule": true,
     "strict": true,
     "removeComments": true,
+    "target": "esnext",
     "plugins": [
       {
         "name": "typescript-deno-plugin"
