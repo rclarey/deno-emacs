@@ -11,16 +11,36 @@ This repository contains the following utilities:
 The package also exports a minor mode that applies ~(deno-fmt)~ on save.
 
 ** Installation
-*** General
-[[https://melpa.org/#/getting-started][Configure emacs to use melpa]], then require ~deno-fmt~ in your emacs config:
+Feel free to replace ~typescript-mode~ / ~js2-mode~ in the following with your TypeScript/JavaScript mode of choice.
+
+*** Vanilla
+[[https://melpa.org/#/getting-started][Configure emacs to use melpa]], and require ~deno-fmt~ in your emacs config
 #+BEGIN_SRC elisp
 (require 'deno-fmt)
 #+END_SRC
+then add hooks to automatically enable the minor mode
+#+BEGIN_SRC elisp
+(add-hook 'typescript-mode-hook 'deno-fmt-mode)
+(add-hook 'js2-mode-hook 'deno-fmt-mode)
+#+END_SRC
+
+*** use-package
+Add the following to your emacs config
+#+BEGIN_SRC elisp
+(use-package deno-fmt
+  :ensure t
+  :hook (js2-mode . typescript-mode))
+#+END_SRC
 
 *** Doom Emacs
-Add ~deno-fmt~ to your ~.doom.d/packages.el~:
+Add ~deno-fmt~ to your ~.doom.d/packages.el~
 #+BEGIN_SRC elisp
 (package! deno-fmt)
+#+END_SRC
+then add hooks to ~.doom.d/config.el~
+#+BEGIN_SRC elisp
+(add-hook 'typescript-mode-hook 'deno-fmt-mode)
+(add-hook 'js2-mode-hook 'deno-fmt-mode)
 #+END_SRC
 
 *** spacemacs
@@ -30,16 +50,13 @@ Add ~deno-fmt~ to ~dotspacemacs-additional-packages~ in your ~.spacemacs~ file:
   (setq-default
    ;; ...
    dotspacemacs-additional-packages '(deno-fmt)))
-
 #+END_SRC
-
-** Configuration
-To enable the minor mode, add a hook to your TypeScript/JavaScript mode of
-choice.
+then add hooks in ~dotspacemacs/user-config~
 #+BEGIN_SRC elisp
-(add-hook 'typescript-mode-hook 'deno-fmt-mode)
-(add-hook 'js2-mode-hook 'deno-fmt-mode)
-...
+(defun dotspacemacs/user-config ()
+  ;; ...
+  (add-hook 'typescript-mode-hook 'deno-fmt-mode)
+  (add-hook 'js2-mode-hook 'deno-fmt-mode))
 #+END_SRC
 
 * denoconfig
