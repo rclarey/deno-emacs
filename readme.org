@@ -29,7 +29,7 @@ Add the following to your emacs config
 #+BEGIN_SRC elisp
 (use-package deno-fmt
   :ensure t
-  :hook (js2-mode . typescript-mode))
+  :hook (js2-mode typescript-mode))
 #+END_SRC
 
 *** Doom Emacs
