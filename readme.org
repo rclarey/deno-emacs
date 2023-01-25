@@ -4,7 +4,6 @@ A collection of utilities to allow for development with [[https://deno.land][den
 
 This repository contains the following utilities:
 - [[deno-fmt.el]]
-- [[denoconfig.ts]]
 
 * deno-fmt.el
 ~deno-fmt~ is function that formats the current buffer on save with [[https://deno.land/manual/tools/formatter][deno fmt]].
@@ -58,28 +57,3 @@ then add hooks in ~dotspacemacs/user-config~
   (add-hook 'typescript-mode-hook 'deno-fmt-mode)
   (add-hook 'js2-mode-hook 'deno-fmt-mode))
 #+END_SRC
-
-* denoconfig
-~denoconfig~ is a small cli tool to generate a ~tsconfig.json~ to allow emacs
-(or other editors) to understand deno.
-
-** Installation
-Install with ~deno install~:
-#+BEGIN_SRC fish
-deno install \
-    --unstable \
-    --allow-read=<PROJECTS_ROOT> \
-    --allow-write=<PROJECTS_ROOT> \
-    https://deno.land/x/denoconfig@0.1.1/denoconfig.ts
-#+END_SRC
-where ~<PROJECTS_ROOT>~ is the directory where you keep your projects (for
-example =~/repos=).
-
-Alternatively you can install ~denoconfig~ without any permissions,
-but it will prompt you for read/write permissions to the ~tsconfig.json~ in the
-directory where you run it.
-
-** Use
-Run ~denoconfig~ in the root directory of your project.
-
-~denoconfig --help~ will display available options.
