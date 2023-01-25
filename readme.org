@@ -59,7 +59,7 @@ then add hooks in ~dotspacemacs/user-config~
 #+END_SRC
 
 ** Only enable ~deno-fmt-mode~ for Deno projects
-The most reliable way to do this is to make sure your Deno projects always have a ~deno.jsonc~/~deno.json~ file in the root directory, then you can do something like:
+The most reliable way to do this is to make sure your Deno projects always have a ~deno.jsonc~ or ~deno.json~ file in the root directory, then you can do something like:
 #+BEGIN_SRC elisp
 (defun deno-project-p ()
   (let ((root (projectile-project-root)))
