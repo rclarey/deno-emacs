@@ -57,3 +57,21 @@ then add hooks in ~dotspacemacs/user-config~
   (add-hook 'typescript-mode-hook 'deno-fmt-mode)
   (add-hook 'js2-mode-hook 'deno-fmt-mode))
 #+END_SRC
+
+** Only enable ~deno-fmt-mode~ for Deno projects
+The most reliable way to do this is to make sure your Deno projects always have a ~deno.jsonc~/~deno.json~ file in the root directory, then you can do something like:
+#+BEGIN_SRC elisp
+(defun deno-project-p ()
+  (let ((root (projectile-project-root)))
+    (unless (null root)
+      (let ((config1 (concat root "deno.jsonc"))
+            (config2 (concat root "deno.json")))
+        (or (file-exists-p config1) (file-exists-p config2))))))
+
+(defun fmt-for-deno ()
+  (if (deno-project-p)
+      (deno-fmt-mode)))
+
+(add-hook 'typescript-mode-hook #'fmt-for-deno)
+(add-hook 'js2-mode-hook #'fmt-for-deno)
+#+END_SRC
